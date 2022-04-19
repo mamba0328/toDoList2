@@ -26,19 +26,35 @@
                     </div>
                 </div>
             </div>
+
             <div id="toDosZone">
-                
+                <div id="mainTaskZoneWrapper">
+                    <div id="todayTodos" class="todoDeadline">Today</div>
+                    <div id="tommorowTodos" class="todoDeadline">Tommorow</div>
+                    <div id="somedayTodos" class="todoDeadline">Someday</div>
+                </div>
+                <div id="competedTasks">
+
+                </div>
             </div>
             
             <div id="modalWindow" class="modal">
-                <input id="modalTaskName" placeholder="Name a Task">
-                <div id="modalDeadline">Here you'll see deadlines</div>
-                <div id="modalNotes">
-                    <div>Notes</div>
-                    <input type="text" placeholder="Enter notes">
-                    
+                <div id="modalWrapper">
+                 <input type='text' id="modalTaskName" placeholder="Name a Task">
+                 <div id="modalDeadline">
+                     <h3>Deadline</h3>
+                     <div id="deadlinesWrapper">
+                        <div class="deadline"><h1>Today</h1></div>
+                        <div class="deadline"><h1>Tommorow</h1></div>
+                        <div class="deadline"><h1>Someday</h1></div>
+                     </div>   
+                 </div>
+                 <div id="modalNotes">
+                     <h3>Notes</h3>
+                     <textarea id='notes' placeholder="Insert your notes"></textarea>   
+                 </div>
                 </div>
-                <button>Save the task</button>
+                <button id="saveTask">Save the task</button>
             </div> 
             <div id="overlay" class="modal"></div>
         </main>
