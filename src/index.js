@@ -1,6 +1,11 @@
 import { openModal, closeModal } from "./modalAppearence"; 
+import makeTask from "./taskFactory";
+import showTask from "./showTask";
+import makeBtnsFunctional from "./completeBtnDOM";
 
 
+const tasksCollection = []; 
+let chosenDeadline = ''; 
 
 //add a task button functionality 
 const addATaskButton = document.getElementById('addATask'); 
@@ -39,19 +44,35 @@ taskNameInput.addEventListener('mouseleave', (e) => {
 const deadlines = Array.from(document.getElementsByClassName('deadline'));
 
 deadlines.forEach(deadline => { 
- deadline.addEventListener('mouseover', (e)=> { 
-     e.target.style.borderBottom = '1px solid black'
- })
- deadline.addEventListener('mouseout', (e)=> { 
-    e.target.style.borderBottom = 'none'
+    deadline.addEventListener('mouseover', (e)=> { 
+        e.target.style.color = 'rgba(0,0,0,0.8)';
+    })
+    deadline.addEventListener('mouseout', (e)=> { 
+        e.target.style.color = 'rgb(78, 78, 78)';
+        if(chosenDeadline === ''){ 
+         e.target.style.borderBottom = 'none';
+      } 
+    })
 })
-})
+    for(let i=0; i<deadlines.length; i++){ 
+
+     deadlines[i].addEventListener('click', (e)=> { 
+            return chosenDeadline = i;
+        })
+    }
 
 //save task module functionality 
 const saveTask = document.getElementById('saveTask');
 
 saveTask.addEventListener('click', () => {
-    closeModal();
+    //creates new task and push it to collection
+    let newTask = makeTask(taskNameInput.value, chosenDeadline);
+    tasksCollection.push(newTask);
+    showTask(newTask.name, newTask.deadline);
+    chosenDeadline = '' ; //returns deadline to unchosen 
+    closeModal(); 
+    makeBtnsFunctional();
+    
 })
 
 saveTask.addEventListener('mouseover', (e) => {
@@ -82,4 +103,14 @@ todoDeadlines.forEach(todoDeadline => {
         e.target.classList.remove('mouseon');
      }
     })
+
+    todoDeadline.addEventListener('click', (e) => { 
+        if(e.target.nextElementSibling.style.display === 'none'){ 
+            e.target.nextElementSibling.style.display = 'flex';
+        } else { 
+            e.target.nextElementSibling.style.display = 'none'
+        }
+        
+    })
 })
+
