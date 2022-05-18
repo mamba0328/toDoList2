@@ -48,7 +48,7 @@ footer {
     width: 20%;
     min-width: 20%;
     border-right: solid black 2px;
-    background-color: rgb(236, 231, 208);
+    background-color: rgb(242, 253, 241);
     display: flex;
     flex-direction: column;
     display: flex;
@@ -113,6 +113,7 @@ footer {
     justify-content: space-around;
     align-items: center;
     padding: 0 5%;
+    background-image: url(https://wallpapershome.ru/images/wallpapers/toskana-3840x2160-italiya-pole-16282.jpg);
 }
 
 #mainTaskZoneWrapper{
@@ -156,12 +157,38 @@ footer {
 #competedTasks{
     height: 70%;
     width: 25%;
-    justify-content: flex-start;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
     justify-content: flex-start;
     border: 1.75px solid grey;
     background-color: rgb(245, 245, 245);
 }
+
+.completedTask{ 
+    border-bottom: none;
+    height: 7%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5%;
+    font-size: larger;
+    color: rgb(100, 100, 100);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.completedTask.mouseon{ 
+    height: 7%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 5%;
+    font-size: larger;
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+} 
 
 #modalWindow{ 
     position: fixed;
@@ -171,15 +198,12 @@ footer {
     transition: 200ms ease-in-out;
     z-index: 10; 
     background-color: rgb(251, 255, 252);
-    border-radius: 2em;
-    border: solid black 2px;
-    height: 60%;
-    width: 30%;
+    height: 80%;
+    width: 35%;
     display: flex; 
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    padding-top: 1%;
 }
 
 #modalWindow.active{ 
@@ -204,7 +228,7 @@ footer {
     color: black;
     width: 80%;
     height: 10%;
-    font-size: large;
+    font-size: x-large;
     font-weight: bolder;
     cursor: pointer;
     margin-top: 3%;
@@ -214,10 +238,10 @@ footer {
 
 #modalDeadline { 
     width: 80%;
-    height: 18%;
-    font-size: large;
+    height: 12%;
     display: flex;
     flex-direction: column;
+    font-size: 140%;
     justify-content: space-between;
     min-width: fit-content;
     min-height: fit-content;
@@ -227,9 +251,9 @@ footer {
     display: flex;
     width: 100%;
     justify-content: space-between;
-    font-size: 55%;
+    font-size: 58%;
     color: rgb(78, 78, 78);
-    
+    font-size: 120%;
 }
 
 #deadlinesWrapper div{
@@ -238,7 +262,7 @@ footer {
 
 #modalNotes { 
     width: 80%;
-    height: 50%;
+    height: 40%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -251,21 +275,21 @@ footer {
     width: 100%;
     height: 80%;
     text-align: start;
+    font-size: medium;
     border: none;
     resize: none;
     background-color: transparent;
-    outline: 1px dotted rgb(26, 153, 26);
+    outline: 1px solid rgb(78, 78, 78);
     cursor: pointer;
     min-width: fit-content;
     min-height: fit-content;
+    padding: 2% 0 0 2%;
 }
 
 #modalWindow button { 
     height: 10%;
     width: 100%;
     background-color: transparent;
-    border-bottom-right-radius: 1.5em;
-    border-bottom-left-radius: 1.5em;
     border: none;
     cursor: pointer;
     font-size: larger;
@@ -278,7 +302,7 @@ footer {
 ::placeholder{ 
     color: rgb(26, 153, 26);
     font-style: italic;
-    font-size: large;
+    font-size: 110%;
     text-align: start;
     font-weight: bolder;
 }
@@ -333,3 +357,174 @@ footer {
     cursor: pointer;
 }
 
+#modalInfo { 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: 200ms ease-in-out;
+    z-index: 10; 
+    background-color: rgb(251, 255, 252);
+    height: 75%;
+    width: 45%;
+    display: flex; 
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+}
+
+#modalInfo.active{ 
+    transform: translate(-50%, -50%) scale(1);
+}
+
+#modalMainInfo { 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100%;
+    width: 70%;
+    text-align: left;
+    padding: 2% 0 0 2%;
+}
+
+#modalMainInfo h2 { 
+    height: 10%;
+    width: 100%;
+}
+
+#modalSideBar { 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    height: 100%;
+    width: 30%;
+    background-color: rgb(245, 245, 245);
+    border-left: 1px solid rgb(78, 78, 78);
+}
+
+#modalInfoDeadline { 
+    display: flex;
+    flex-direction: column;
+    height: 70%;
+    width: 100%;
+    padding: 5% 5%;
+    text-align: left;
+}
+
+#modalInfoDeadline div { 
+    height: 15%;
+    width: 100%;
+    color: rgb(78, 78, 78);
+    font-size: xx-large  ;
+    text-align: left;
+    cursor: pointer;
+}
+
+#buttonsSection { 
+    height: 30%;
+    width: 100%;
+    display: flex; 
+    justify-content: space-around;
+    align-items: flex-end;
+    padding: 0 0 5% 0;
+}
+
+#cancel { 
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    color: white;
+    background-color: rgb(192, 45, 45);
+    cursor: pointer;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    font-size: x-large;
+    font-weight: bold;
+    padding-bottom: 1%;
+}
+
+#apply{ 
+    height: 40px;
+    width: 40px;
+    border-radius: 20px;
+    color: white;
+    background-color: rgb(25, 112, 25);    
+    cursor: pointer;
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    font-size: xx-large;
+    font-weight: 100;
+    padding-bottom: 2%;
+}
+
+#tagsContainer { 
+    height: 90%;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 2%;
+}
+#tags { 
+    display: flex;
+    width: 100%;
+    height: 15%;
+    justify-content: center;
+    align-items: flex-end;
+    row-gap: -1000px;
+    flex-wrap: wrap;
+}
+
+.tag { 
+    width: 33%;
+    margin: 0% 5%;
+    height: 30px;
+    font-size: large;
+    font-weight: bold;
+    background-color: rgb(117, 23, 105);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 50%;
+}
+
+.chosen { 
+    opacity: 100%;
+}
+
+#Important{
+    background-color:red;
+}
+#Urgent{
+    background-color:orangered ;
+}
+#Workrelated{
+    background-color:rgb(0, 26, 255) ;
+}
+#Selfrelated{
+    background-color:green ;
+}
+
+.ImportantNavigation { 
+    color:red;
+    font-weight: 900;
+}
+.UrgentNavigation { 
+    color:orangered;
+    font-weight: 900;
+}
+.WorkrelatedNavigation { 
+    color:rgb(0, 26, 255);
+    font-weight: 900;
+}
+.SelfrelatedNavigation { 
+    color:green;
+    font-weight: 900;
+}
+            

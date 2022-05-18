@@ -1,3 +1,5 @@
+import transferTask from "./transferToDeleted";
+
 function makeBtnsFunctional() { 
     const buttons = Array.from(document.getElementsByClassName('completeCircle'));
     const button = buttons[buttons.length-1];
