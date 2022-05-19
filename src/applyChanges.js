@@ -1,4 +1,4 @@
-function applyChanges(e, chosenTags, tasksCollection, chosenDeadline, showTask) { 
+function applyChanges(e, chosenTags, tasksCollection, chosenDeadline, showTask,  refreshStoraged, getTask) { 
 
     //tags change
     const taskId = e.target.classList.value;
@@ -20,7 +20,8 @@ function applyChanges(e, chosenTags, tasksCollection, chosenDeadline, showTask) 
         oldTask.parentElement.remove();
         showTask(task.name, task.deadline, task.id);
     }
-     
+
+    refreshStoraged(tasksCollection, getTask)
 }
 
 export default applyChanges

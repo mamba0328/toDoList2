@@ -9,10 +9,22 @@ import choseTag from "./choseTag";
 import applyChanges from "./applyChanges";
 import changeDeadline from "./changeDeadline";
 import {showTagedTasks, cleanFilters} from "./showTagedTasks";
+import getTask from "./getTasksFromStorage";
+import refreshStoraged from "./removeFromStorage";
 
 const tasksCollection = []; 
 let chosenDeadline = ''; 
 let chosenTags = [];
+
+//shows storaged tasks
+let storagedTasks = getTask(); 
+if (storagedTasks != 0) { 
+    storagedTasks.forEach(task => { 
+    let newTask = makeTask(task[0], task[1], task[2], task[3], getTask);
+    tasksCollection.push(newTask);
+    showTask(newTask.name, newTask.deadline, newTask.id);
+    })
+}
 
 //add a task button functionality 
 const addATaskButton = document.getElementById('addATask'); 
@@ -81,15 +93,20 @@ deadlines.forEach(deadline => {
 const saveTask = document.getElementById('saveTask');
 
 saveTask.addEventListener('click', () => {
+    if(taskNameInput.value != 0){ 
     //creates new task and push it to collection
     const notesArea = document.getElementById('notes');
-    let newTask = makeTask(taskNameInput.value, chosenDeadline, notesArea.value, chosenTags);
+    let newTask = makeTask(taskNameInput.value, chosenDeadline, notesArea.value, chosenTags, getTask);
+    newTask.putTask();
     tasksCollection.push(newTask);
     showTask(newTask.name, newTask.deadline, newTask.id);
     //clears module window
     chosenDeadline = ''; //returns deadline to unchosen 
     chosenTags = [];
     closeModal(); 
+   } else { 
+       alert("You should enter at least name of the task")
+   }
 })
 
 saveTask.addEventListener('mouseover', (e) => {
@@ -195,7 +212,7 @@ tags.forEach(tag => {
 //apply changes button  
 const applyButton = document.getElementById('apply')
 applyButton.addEventListener('click', (e) => { 
-    applyChanges(e, chosenTags, tasksCollection, chosenDeadline, showTask); 
+    applyChanges(e, chosenTags, tasksCollection, chosenDeadline, showTask, refreshStoraged, getTask); 
     closeModalInfo();
 })
 
