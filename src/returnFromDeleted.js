@@ -8,6 +8,8 @@ function returnFromCompleted(e, tasksCollection) {
             task = tasksCollection[i];
         }
     }
+
+
     const properties = [task.name, task.deadline, task.id];
     return properties
 }

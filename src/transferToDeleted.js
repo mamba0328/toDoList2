@@ -1,10 +1,11 @@
-function transferTask(e, tasksCollection) { 
+function transferTask(e, tasksCollection, refreshStoraged , getTask) { 
     const taskId = e.target.parentElement.classList.value;
     let task = 0;
     
     for(let i=0; i<tasksCollection.length; i++){ 
         if(taskId == tasksCollection[i].id) { 
             task = tasksCollection[i];
+            tasksCollection[i].deleted = true;//deletes from localstorage
         }
     }
 
@@ -15,6 +16,8 @@ function transferTask(e, tasksCollection) {
     completedTask.classList.add('completedTask');
     completedTask.setAttribute('id', task.id)
     completedTasksHolder.appendChild(completedTask);
+    refreshStoraged(tasksCollection, getTask)
+    return tasksCollection
 } 
 
 export default transferTask

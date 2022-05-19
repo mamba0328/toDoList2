@@ -13,6 +13,7 @@ import getTask from "./getTasksFromStorage";
 import refreshStoraged from "./removeFromStorage";
 
 const tasksCollection = []; 
+const deletedCollection = [];
 let chosenDeadline = ''; 
 let chosenTags = [];
 
@@ -152,7 +153,8 @@ todoDeadlines.forEach(todoDeadline => {
 const body = document.querySelector('body')
 body.addEventListener('click', (e) => { 
     if(e.target.matches('.completeCircle')) { 
-       transferTask(e, tasksCollection);
+       transferTask(e, tasksCollection, refreshStoraged , getTask);
+       console.log(tasksCollection)
        e.target.parentElement.remove();
     }
 })
@@ -203,9 +205,7 @@ tags.forEach(tag => {
  //task info 
  body.addEventListener('click', (e) => { 
      if(e.target.matches('.taskName')){
-         console.log(chosenTags)
-         chosenTags = openModalInfo(e, lightTheTag, tasksCollection, chosenTags);
-         console.log(chosenTags)
+         chosenTags = openModalInfo(e, lightTheTag, tasksCollection, chosenTags)
      } 
 }) 
 
